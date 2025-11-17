@@ -21,7 +21,7 @@ export const generateSuggestion = async (
   studentName: string,
   letterContent: string
 ): Promise<string> => {
-  if (!process.env.API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     throw new Error("API key is not configured.");
   }
 
@@ -31,7 +31,7 @@ export const generateSuggestion = async (
   }
   
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
